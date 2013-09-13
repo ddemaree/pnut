@@ -1,0 +1,24 @@
+.page-header
+  = link_to admin_destinations_path, class: 'back-button' do
+    %span.arrow &larr;
+    Back
+  %h1 Show Destination
+
+.url-info
+  .short-url
+    %b Short URL
+    %code
+      = "http://#{request.host_with_port}/#{@destination.canonical_path}"
+  .long-url
+    %b Destination
+    %code
+      = @destination.url
+
+%h3 Custom slugs
+
+= form_for [:admin, @destination] do |form|
+  = form.text_field :custom_path
+  %button{type: 'submit'}
+    Update custom slug
+
+= debug @destination

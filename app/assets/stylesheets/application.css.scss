@@ -1,0 +1,85 @@
+// require_self
+// require_tree .
+// require 'normalize';
+
+@import 'bourbon';
+@import 'neat';
+@import 'flexbox';
+
+body {
+  font-family: 'source-sans-pro', 'Helvetica Neue';
+  font-weight: 400;
+}
+
+.main-content {
+  @include outer-container;
+}
+
+.row {
+  @include row;
+}
+
+.quick-add {
+  padding: em(20);
+
+  form {
+    @include flex(1);
+    @include flex-context;
+
+    * {
+      margin: 0;
+    }
+
+    label, input {
+      @include pad(em(10, 20));
+      font-size: em(20);
+    }
+
+    label {
+      font-weight: 300;
+      padding-left: 0;
+      // padding-right: em(10, 20);
+    }
+
+    input {
+      @include flex(1);
+      border: 1px solid #ccc;
+      font-family: inherit;
+      @include placeholder {
+        color: #ddd;
+      }
+    }
+
+    button {
+      background: #ccc;
+      border: 0;
+      color: #fff;
+      font-size: em(30);
+      padding: 0 em(20,40);
+    }
+  }
+}
+
+.destinations-main {
+  @include span-columns(9);
+
+  .destination {
+    @include pad(em(20));
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 1px rgba(#ccc, 0.2);
+    margin: em(10) 0;
+    position: relative;
+
+    .delete {
+      color: #ddd;
+      font-size: em(30);
+      line-height: em(16, 30);
+      padding: em(10, 30);
+      padding-top: em(10, 30);
+      position: absolute;
+      right: 0;
+      text-decoration: none;
+      top: 0;
+    }
+  }
+}

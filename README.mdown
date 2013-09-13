@@ -1,0 +1,29 @@
+# Pnut: A simple, namespaced URL shortener
+
+This is here to provide namespaced sets of short URLs, for use in presentations and such. It's in Rails (not Sinatra or PHP or whatever) mostly for familiarity and for an eventual slick admin UI.
+
+URLs should be namespaced by hostname and an optional project name. That's to say: `http://dem.mx/thingy/a1` and `http://yo.ga/thingy/a1` should be _different_ URLs by default, however it should also be possible for `yo.ga` to be configured as an alias to `dem.mx`. In other words, this app shouldn't just assume that it handles short URL redirects for any domain pointing to it on Heroku.
+
+## Public URL formats
+
+`http://example.com/:id`: The "root" namespace for `example.com`. Resolves to whatever URL has the `example.com` hostname and an empty/nil namespace.
+
+`http://example.com/wcr2013/:id`: A project namespace named `wcr2013` within the `example.com` hostname.
+
+`http://example.herokuapp.com/example.com/wcr2013/a1`: Alternate format, mainly for admin and debugging purposes.
+
+`http://example.com(/:namespace)/:id/x`: Similar to Bitly, this should display a metadata/stats view for each URL. (This naturally requires logging certain information.)
+
+Other stuff
+
+- Pass-through referrers (the Referer header should reflect the original request)
+
+## Admin URL formats
+
+`http://pnut.herokuapp.com/admin/*`: The `admin` route namespace should resolve to, like, the admin. `admin` should be a reserved word in IDs and namespaces (though I think in practice the router will just give admin URLs precedence over other ones).
+
+It should be possible to mark URLs as "draft", which makes them only resolve when logged in. When in draft mode, URLs will resolve to a temporary (302) redirect for logged-in users. Draft URLs can be published, and the intent is for this change to be permanent. Once published, URLs will resolve to a 301 redirect for all users.
+
+## Other nice to haves
+
+It would be nice if URLs could resolve to a private S3 URL. Like, in addition to URLs, I can upload files to S3 and have the app be responsible for delivering the data to users.

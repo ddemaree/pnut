@@ -1,0 +1,14 @@
+!!! 5
+%html(lang='en')
+  %head
+    %title Pnut!
+    = stylesheet_link_tag "application", media: "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    / %script(src="//use.edgefonts.net/source-sans-pro:n3,n4,n6,n7,i4,i7;source-code-pro:n3,n4,n6,n7,i4,i7.js")
+
+  %body
+    .main-content
+      = yield :layout
+
+    = yield :scripts if content_for?(:scripts)

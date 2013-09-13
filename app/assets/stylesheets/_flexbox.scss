@@ -1,0 +1,34 @@
+// Cross-browser mixins for CSS3 Flexbox
+// Note that this layout style works fairly well everywhere but
+// IE < 9, and therefore should only be used on pages where IE
+// compatibility is not guaranteed (e.g. the backend)
+
+@mixin flex-context {
+  display: -webkit-box;  // Safari 6/iOS 6 and earlier
+  display: -moz-box;     // Firefox pre-2013
+  display: -ms-flexbox;  // IE 10+
+  display: -webkit-flex; // Chrome
+  display: flex;         // W3C final syntax (current Chrome, FF)
+}
+
+@mixin flex-direction($direction: column) {
+  // TODO: Compatibility with old/Safari syntax?
+  @include prefixer(flex-direction, $direction, webkit ms spec);
+}
+
+@mixin flex($num) {
+  @include prefixer(box-flex, $num, webkit moz spec); // Old 2009 syntax
+  @include prefixer(flex, $num, ms webkit spec); // Current spec
+}
+
+@mixin flex-align-items($alignment) {
+  @include prefixer(box-align, $alignment, webkit moz);
+  @include prefixer(flex-align, $alignment, ms);
+  @include prefixer(align-items, $alignment, webkit spec);
+}
+
+@mixin flex-justify-content($justify) {
+  @include prefixer(box-pack, $justify, webkit moz);
+  @include prefixer(flex-pack, $justify, ms);
+  @include prefixer(justify-content, $justify, webkit spec);
+}

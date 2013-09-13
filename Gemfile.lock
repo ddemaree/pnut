@@ -1,0 +1,217 @@
+GIT
+  remote: git://github.com/indirect/haml-rails.git
+  revision: 6b7a5dead27957aff853b6c82b81fc13543c1aeb
+  branch: master
+  specs:
+    haml-rails (0.4)
+      actionpack (>= 3.1, < 4.1)
+      activesupport (>= 3.1, < 4.1)
+      haml (>= 3.1, < 4.1)
+      railties (>= 3.1, < 4.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    actionmailer (4.0.0)
+      actionpack (= 4.0.0)
+      mail (~> 2.5.3)
+    actionpack (4.0.0)
+      activesupport (= 4.0.0)
+      builder (~> 3.1.0)
+      erubis (~> 2.7.0)
+      rack (~> 1.5.2)
+      rack-test (~> 0.6.2)
+    activemodel (4.0.0)
+      activesupport (= 4.0.0)
+      builder (~> 3.1.0)
+    activerecord (4.0.0)
+      activemodel (= 4.0.0)
+      activerecord-deprecated_finders (~> 1.0.2)
+      activesupport (= 4.0.0)
+      arel (~> 4.0.0)
+    activerecord-deprecated_finders (1.0.3)
+    activesupport (4.0.0)
+      i18n (~> 0.6, >= 0.6.4)
+      minitest (~> 4.2)
+      multi_json (~> 1.3)
+      thread_safe (~> 0.1)
+      tzinfo (~> 0.3.37)
+    addressable (2.3.5)
+    annotations (0.1.2)
+      rake
+    arel (4.0.0)
+    atomic (1.1.13)
+    awesome_print (1.1.0)
+    bourbon (3.1.6)
+      sass (>= 3.2.0)
+      thor
+    builder (3.1.4)
+    coffee-rails (4.0.0)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0.beta, < 5.0)
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.6.3)
+    crack (0.4.1)
+      safe_yaml (~> 0.9.0)
+    diff-lcs (1.2.4)
+    dotenv (0.9.0)
+    dotenv-rails (0.9.0)
+      dotenv (= 0.9.0)
+    erubis (2.7.0)
+    execjs (2.0.1)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.2.1)
+      factory_girl (~> 4.2.0)
+      railties (>= 3.0.0)
+    faker (1.2.0)
+      i18n (~> 0.5)
+    faraday (0.8.8)
+      multipart-post (~> 1.2.0)
+    fivemat (1.2.1)
+    haml (4.0.3)
+      tilt
+    hashie (2.0.5)
+    hike (1.2.3)
+    httpauth (0.2.0)
+    i18n (0.6.5)
+    jbuilder (1.5.1)
+      activesupport (>= 3.0.0)
+      multi_json (>= 1.2.0)
+    jquery-rails (3.0.4)
+      railties (>= 3.0, < 5.0)
+      thor (>= 0.14, < 2.0)
+    json (1.8.0)
+    jwt (0.1.8)
+      multi_json (>= 1.5)
+    kgio (2.8.0)
+    mail (2.5.4)
+      mime-types (~> 1.16)
+      treetop (~> 1.4.8)
+    mime-types (1.25)
+    minitest (4.7.5)
+    multi_json (1.8.0)
+    multipart-post (1.2.0)
+    neat (1.2.1)
+      bourbon (>= 2.1)
+      sass (>= 3.2)
+    oauth2 (0.8.1)
+      faraday (~> 0.8)
+      httpauth (~> 0.1)
+      jwt (~> 0.1.4)
+      multi_json (~> 1.0)
+      rack (~> 1.2)
+    omniauth (1.1.4)
+      hashie (>= 1.2, < 3)
+      rack
+    omniauth-google-oauth2 (0.2.1)
+      omniauth (~> 1.0)
+      omniauth-oauth2
+    omniauth-oauth2 (1.1.1)
+      oauth2 (~> 0.8.0)
+      omniauth (~> 1.0)
+    pg (0.16.0)
+    polyglot (0.3.3)
+    putsinator (1.0.0)
+    rack (1.5.2)
+    rack-test (0.6.2)
+      rack (>= 1.0)
+    rails (4.0.0)
+      actionmailer (= 4.0.0)
+      actionpack (= 4.0.0)
+      activerecord (= 4.0.0)
+      activesupport (= 4.0.0)
+      bundler (>= 1.3.0, < 2.0)
+      railties (= 4.0.0)
+      sprockets-rails (~> 2.0.0)
+    railties (4.0.0)
+      actionpack (= 4.0.0)
+      activesupport (= 4.0.0)
+      rake (>= 0.8.7)
+      thor (>= 0.18.1, < 2.0)
+    raindrops (0.12.0)
+    rake (10.1.0)
+    rdoc (3.12.2)
+      json (~> 1.4)
+    rspec-core (2.14.5)
+    rspec-expectations (2.14.2)
+      diff-lcs (>= 1.1.3, < 2.0)
+    rspec-mocks (2.14.3)
+    rspec-rails (2.14.0)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 2.14.0)
+      rspec-expectations (~> 2.14.0)
+      rspec-mocks (~> 2.14.0)
+    safe_yaml (0.9.5)
+    sass (3.2.10)
+    sass-rails (4.0.0)
+      railties (>= 4.0.0.beta, < 5.0)
+      sass (>= 3.1.10)
+      sprockets-rails (~> 2.0.0)
+    sdoc (0.3.20)
+      json (>= 1.1.3)
+      rdoc (~> 3.10)
+    sprockets (2.10.0)
+      hike (~> 1.2)
+      multi_json (~> 1.0)
+      rack (~> 1.0)
+      tilt (~> 1.1, != 1.3.0)
+    sprockets-rails (2.0.0)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      sprockets (~> 2.8)
+    sqlite3 (1.3.8)
+    thor (0.18.1)
+    thread_safe (0.1.3)
+      atomic
+    tilt (1.4.1)
+    timecop (0.6.3)
+    treetop (1.4.15)
+      polyglot
+      polyglot (>= 0.3.1)
+    tzinfo (0.3.37)
+    uglifier (2.2.1)
+      execjs (>= 0.3.0)
+      multi_json (~> 1.0, >= 1.0.2)
+    unicorn (4.6.3)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
+    webmock (1.13.0)
+      addressable (>= 2.2.7)
+      crack (>= 0.3.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  addressable
+  annotations
+  awesome_print
+  bourbon
+  coffee-rails (~> 4.0.0)
+  dotenv-rails
+  factory_girl_rails
+  faker
+  fivemat
+  haml-rails!
+  jbuilder (~> 1.2)
+  jquery-rails
+  neat
+  omniauth
+  omniauth-google-oauth2
+  pg
+  putsinator
+  rails (= 4.0.0)
+  rspec-rails
+  sass-rails (~> 4.0.0)
+  sdoc
+  sqlite3
+  timecop
+  uglifier (>= 1.3.0)
+  unicorn
+  webmock

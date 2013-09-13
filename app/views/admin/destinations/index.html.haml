@@ -1,0 +1,41 @@
+%h1 Destinations
+
+.row
+  .destinations-main
+    .quick-add
+      = form_tag admin_destinations_path, method: 'post' do
+        %label(for="url") Shorten
+        = text_field_tag "url", params[:url], placeholder: "example.com/some-really-long-dumb-url"
+        %button{type: 'submit', value: 'quick'}
+          &#10095;
+
+    .destinations-list(data-bind="template: {name: 'destinations-template', foreach: destinations, as: 'destination'}")
+
+- content_for :scripts do
+  %script#destinations-template(type="text/html")
+    .destination{:data => {:bind => "attr: { id: ('dest_' + $index())}"}}
+      %a.delete(href="#") &times;
+
+      .endpoint-info
+        %form#title-editor.editor(data-bind="visible: editingTitle(), submit: updateTitle")
+          %input(type='hidden' name='_method' value='put')
+          %textarea(name="destination[title]" data-bind="value: titleBuffer")
+          .editor-buttons
+            %a(href="#" data-bind="click: function(){ destination.titleBuffer(destination.title()); destination.editingTitle(false) }") Cancel
+            %button(type="submit") Save
+
+        .title(data-bind="visible: !editingTitle()")
+          %a(data-bind="attr: {href: url}, text: displayTitle")
+          %a.edit-trigger(href="#" data-bind="click: function(){ destination.titleBuffer(destination.title()); destination.editingTitle(true) }") Edit
+
+      .info
+        %time.created(data-bind="attr: {'datetime': createdAt}, text: createdDate")
+
+  %script#destinations-json(type="application/json")
+    = @destinations.to_json.html_safe
+
+  :javascript
+    var destinationsJSON = $('#destinations-json').html();
+    var destinationsData = JSON.parse(destinationsJSON);
+    var destinationsModel = new pnut.DestinationsList(destinationsData);
+    ko.applyBindings(destinationsModel);
