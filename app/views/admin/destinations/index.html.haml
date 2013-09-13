@@ -6,6 +6,7 @@
       = form_tag admin_destinations_path, method: 'post' do
         %label(for="url") Shorten
         = text_field_tag "url", params[:url], placeholder: "example.com/some-really-long-dumb-url"
+        = text_field_tag "custom_path", params[:url], placeholder: "something/short"
         %button{type: 'submit', value: 'quick'}
           &#10095;
 
