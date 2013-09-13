@@ -1,0 +1,9 @@
+.login-form
+  = form_tag admin_session_path do
+    .control-group
+      %label(for="admin_password") Enter your admin password:
+      = password_field_tag "admin_password"
+
+    .buttons
+      %button(type='submit')
+        Log in

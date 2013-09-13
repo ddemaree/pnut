@@ -1,6 +1,9 @@
 Pnut::Application.routes.draw do
 
   namespace :admin do
+    resource :session
+    get "/login" => "sessions#new", as: :login
+
     resources :destinations
     get "/" => redirect("/admin/destinations")
   end

@@ -1,6 +1,7 @@
 require 'addressable/uri'
 
 class Admin::DestinationsController < ApplicationController
+  include AdminController
 
   def index
     @destinations = Destination.all
