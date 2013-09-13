@@ -38,7 +38,7 @@ I seriously hacked this together over two days while also working on [my talk fo
 ### Actual problems
 
 - **No tests.** Pnut is a very minimum-viable product, and while its core functionality has been tested by me, the next step is to refactor and add tests so this code can be good.
-- **No admin authentication.** I sincerely hope to have fixed this by the time anyone reads this, but at present there is no login/authentication of any kind protecting the admin.
+- **Better admin authentication.** The app currently uses the environment config to set a plaintext password that restricts access to the admin. This sucks for reasons I hope are obvious to you; perhaps you can help me decide how to fix it.
 - **General jankiness.** The admin UI is a serious mess, though it does have the beginnings of some nice JS-based interactions.
 
 ### Feature wishlist
