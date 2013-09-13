@@ -60,6 +60,32 @@ body {
   }
 }
 
+.editor {
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: inset 2px 2px 0 rgba(#ccc, 0.2);
+  padding: em(10);
+  position: relative;
+  z-index: 999;
+
+  textarea {
+    background: transparent;
+    border: 0;
+    font-family: inherit;
+    font-size: 1em;
+    height: 2.5em;
+    margin: 0;
+    padding: 0;
+    resize: none;
+    width: 100%;
+
+    &, &:focus {
+      outline-color: transparent;
+      outline-style: none;
+    }
+  }
+}
+
 .destinations-main {
   @include span-columns(9);
 
