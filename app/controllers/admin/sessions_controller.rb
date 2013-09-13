@@ -6,7 +6,10 @@ class Admin::SessionsController < ApplicationController
   end
 
   def create
-    set_password_in_session(params[:admin_password])
+    if user = User.authenticate(params[:admin_email], params[:admin_password])
+      self.current_user = user
+    end
+
     redirect_to admin_destinations_path
   end
 

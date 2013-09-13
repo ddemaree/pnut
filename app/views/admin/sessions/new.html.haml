@@ -1,7 +1,10 @@
 .login-form
   = form_tag admin_session_path do
     .control-group
-      %label(for="admin_password") Enter your admin password:
+      %label(for="admin_email") Email
+      = email_field_tag "admin_email"
+    .control-group
+      %label(for="admin_password") Password
       = password_field_tag "admin_password"
 
     .buttons

@@ -9,6 +9,7 @@ gem 'rails_12factor', group: :production
 gem 'sqlite3', group: :development
 gem 'pg'
 gem 'addressable'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Views
 gem 'haml-rails', github: 'indirect/haml-rails', branch: 'master'

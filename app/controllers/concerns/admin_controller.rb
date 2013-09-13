@@ -13,20 +13,17 @@ module AdminController
     end
   end
 
+  def current_user
+    @current_user ||= User.where(id: session[:user_id]).first if session[:user_id].present?
+  end
+
+  def current_user=(user)
+    session[:user_id] = user.id
+    user
+  end
+
   def logged_in?
-    password_from_config.present? && password_from_session.present? && password_from_session == password_from_config
-  end
-
-  def password_from_config
-    ENV['ADMIN_PASSWORD']
-  end
-
-  def password_from_session
-    session[:admin_password]
-  end
-
-  def set_password_in_session(new_password)
-    session[:admin_password] = new_password
+    !!current_user
   end
 
 end
