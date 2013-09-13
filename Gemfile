@@ -6,7 +6,8 @@ gem 'rails', '4.0.0'
 gem 'rails_12factor', group: :production
 
 # Data
-gem 'sqlite3'
+gem 'sqlite3', group: :development
+gem 'pg'
 gem 'addressable'
 
 # Views
@@ -61,6 +62,5 @@ group :development do
 end
 
 group :production do
-  gem "pg"
   gem "unicorn"
 end
