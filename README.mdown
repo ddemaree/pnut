@@ -1,29 +1,56 @@
-# Pnut: A simple, namespaced URL shortener
+# Pnut. A simple, private, awesome URL shortener.
 
-This is here to provide namespaced sets of short URLs, for use in presentations and such. It's in Rails (not Sinatra or PHP or whatever) mostly for familiarity and for an eventual slick admin UI.
+Pnut is a quick and dirty little app intended to make it easy to include custom short URLs for use in presentations, books, and the like.
 
-URLs should be namespaced by hostname and an optional project name. That's to say: `http://dem.mx/thingy/a1` and `http://yo.ga/thingy/a1` should be _different_ URLs by default, however it should also be possible for `yo.ga` to be configured as an alias to `dem.mx`. In other words, this app shouldn't just assume that it handles short URL redirects for any domain pointing to it on Heroku.
+Pnut is _not_ a replacement for `bit.ly`, `goo.gl`, or `t.co`. Not only do those services have the short-URLs-in-tweets market pretty well covered, the existence of `t.co` has made them fairly unnecessary unless you want stats on who's using your URLs. Stats are cool, and I plan to add a basic stats-counting feature to Pnut in the future, but it's not here on day one, because YAGNI.
 
-## Public URL formats
+What Pnut _is_ here to do: make it easy to create a short URL that looks like this:
 
-`http://example.com/:id`: The "root" namespace for `example.com`. Resolves to whatever URL has the `example.com` hostname and an empty/nil namespace.
+```
+go.dem.mx/gitbook/example1
+```
 
-`http://example.com/wcr2013/:id`: A project namespace named `wcr2013` within the `example.com` hostname.
+In this example, `go.dem.mx` is my custom _hostname_ (which in this case is associated with a Heroku app), `gitbook` is a _namespace_, and `example1` is the _slug_. You can also have URLs with only a slug (which live in the blank or root namespace), or you can use none of the above and refer to short URLs by their base36 primary key.
 
-`http://example.herokuapp.com/example.com/wcr2013/a1`: Alternate format, mainly for admin and debugging purposes.
+In its present, very rough form, Pnut will resolve any URL on any hostname that points to it — that's to say, if both `go.dem.mx` and `go.demaree.me` are pointing to my Heroku app, `go.dem.mx/duck` and `go.demaree.me/duck` will redirect to the same URL. In the future, it should be possible to scope URLs by hostname, so that these two _can_ be different, enabling you to have one set of short URLs for business and another for something resembling pleasure.
 
-`http://example.com(/:namespace)/:id/x`: Similar to Bitly, this should display a metadata/stats view for each URL. (This naturally requires logging certain information.)
+## So, seriously, why Pnut?
 
-Other stuff
+There are two things Pnut does that I needed, which other URL shorteners either don't do or don't do well:
 
-- Pass-through referrers (the Referer header should reflect the original request)
+1. **Namespaces.** Pnut makes it easy to scope unique slugs within a prefix, so related URLs can follow a similar format. In the future, this can be extended further to support something like "show notes"-like lists of all the links in a presentation or book.
 
-## Admin URL formats
+2. **Editability.** When I'm putting together a talk, I like to include a URL for the slides even before I've uploaded the slides to Speaker Deck or some other destination. As a Pnut user, I want to be able to create my short URL _first_, then set or change its endpoint URL at any time.
 
-`http://pnut.herokuapp.com/admin/*`: The `admin` route namespace should resolve to, like, the admin. `admin` should be a reserved word in IDs and namespaces (though I think in practice the router will just give admin URLs precedence over other ones).
 
-It should be possible to mark URLs as "draft", which makes them only resolve when logged in. When in draft mode, URLs will resolve to a temporary (302) redirect for logged-in users. Draft URLs can be published, and the intent is for this change to be permanent. Once published, URLs will resolve to a 301 redirect for all users.
+## Public URL formats handled by Pnut
 
-## Other nice to haves
+`http://example.com/x/:id`: The "root" namespace for `example.com`. Resolves to whatever URL has the `example.com` hostname and the base36 ID `:id`.
 
-It would be nice if URLs could resolve to a private S3 URL. Like, in addition to URLs, I can upload files to S3 and have the app be responsible for delivering the data to users.
+`http://example.com/:namespace/:slug`: A URL with the namespace `:namespace` and the slug `:slug` within the `example.com` hostname.
+
+Pnut also exposes a `+` URL route similar to Bitly, which will show a detail page with stats, notes, and whatnot.
+
+## Pnut is not at all finished
+
+I seriously hacked this together over two days while also working on [my talk for WindyCityRails 2013](http://go.dem.mx/wcr2013/slides). It's not complete, but maybe you can help me with that? Pull requests will be thoughtfully reviewed and graciously accepted.
+
+### Actual problems
+
+- **No tests.** Pnut is a very minimum-viable product, and while its core functionality has been tested by me, the next step is to refactor and add tests so this code can be good.
+- **No admin authentication.** I sincerely hope to have fixed this by the time anyone reads this, but at present there is no login/authentication of any kind protecting the admin.
+- **General jankiness.** The admin UI is a serious mess, though it does have the beginnings of some nice JS-based interactions.
+
+### Feature wishlist
+
+- **Stats!** As a start I want to record all visits and referers for 30 days (if not longer), plus some roll-up or summary stats on a weekly or monthly basis after that.
+- The ability to assign notes/descriptions to each URL after it's created.
+- Pass-through referrers (i.e., the Referer header sent to the endpoint URL should reflect the original request if at all possible)
+- URLs that aren't redirects: Maybe instead of uploading images/PDFs/etc to a service like CloudApp — which is another major short-URL use case — you can upload them to an S3 bucket managed by your Pnut instance?
+- General polished Cadillac-ness.
+
+## Questions?
+
+Email me at <david@demaree.me>.
+
+Copyright &copy;2013 David Demaree. Pnut is open source software under the MIT license (see the LICENSE.txt file for more info).
